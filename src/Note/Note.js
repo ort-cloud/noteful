@@ -39,7 +39,8 @@ export default withRouter(Note);
 
 Note.propTypes = {
   modified: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  //folder: PropTypes.array.isRequired,
   handleDelete: PropTypes.func,
 };

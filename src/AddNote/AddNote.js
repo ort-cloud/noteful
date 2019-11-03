@@ -133,7 +133,9 @@ export default class AddNote extends Component {
                 this.idChange(event.target.value);
               }}
             >
-              <option value={null}>...</option>
+              <option disabled selected value=''>
+                ...
+              </option>
               {this.context.folders.map(folder => (
                 <option key={folder.name} name='folder' value={folder.id}>
                   {folder.name}
