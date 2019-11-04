@@ -41,6 +41,5 @@ Note.propTypes = {
   modified: PropTypes.string,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  //folder: PropTypes.array.isRequired,
   handleDelete: PropTypes.func,
 };

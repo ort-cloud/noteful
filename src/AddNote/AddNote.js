@@ -54,7 +54,6 @@ export default class AddNote extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // id: cuid(),
         name: this.state.name,
         modified: new Date(),
         folderId: this.state.id,
