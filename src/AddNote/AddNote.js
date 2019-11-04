@@ -14,6 +14,7 @@ export default class AddNote extends Component {
       nameValid: false,
       idValid: false,
       validationMessage: "",
+      validationMessageFolder: "",
     };
   }
   static contextType = NoteContext;
@@ -30,7 +31,7 @@ export default class AddNote extends Component {
       });
     } else if (!this.state.id) {
       this.setState({
-        validationMessage: "You must choose a valid folder.",
+        validationMessageFolder: "You must choose a valid folder.",
         idValid: false,
       });
     } else {
@@ -109,11 +110,11 @@ export default class AddNote extends Component {
               }}
             />
           </div>
-          {!this.state.nameValid && (
+          {!this.state.nameValid ? (
             <div>
               <p>{this.state.validationMessage}</p>
             </div>
-          )}
+          ) : null}
           <div className='field'>
             <label htmlFor='note-content-input'>Content</label>
             <textarea
@@ -142,11 +143,11 @@ export default class AddNote extends Component {
                 </option>
               ))}
             </select>
-            {!this.state.nameValid && (
+            {!this.state.idValid ? (
               <div>
-                <p>{this.state.validationMessage}</p>
+                <p>{this.state.validationMessageFolder}</p>
               </div>
-            )}
+            ) : null}
           </div>
           <div className='buttons'>
             <button type='submit'>Add note</button>
