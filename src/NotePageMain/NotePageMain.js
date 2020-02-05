@@ -13,7 +13,7 @@ export default class NotePageMain extends Component {
     return (
       <section className='NotePageMain'>
         <Note
-          id={note.id}
+          id={note.noteId}
           name={note.name}
           modified={note.modified}
           handleDelete={this.context.handleDelete}
@@ -28,6 +28,7 @@ export default class NotePageMain extends Component {
   }
 }
 
+
 NotePageMain.defaultProps = {
   note: {
     content: ''
@@ -35,5 +36,5 @@ NotePageMain.defaultProps = {
 };
 
 NotePageMain.propTypes = {
-  noteId: PropTypes.string
+  noteId: PropTypes.number
 };

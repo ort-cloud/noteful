@@ -66,7 +66,7 @@ class App extends Component {
 
   handleDeleteNote = id => {
     const newNotes = this.state.notes.filter(note => note.id !== id);
-    console.log(newNotes);
+
     const options = {
       method: "DELETE",
     };
@@ -95,7 +95,6 @@ class App extends Component {
   };
 
   handleAddFolder = folder => {
-    console.log(this.props);
     this.setState(
       {
         folders: [...this.state.folders, folder],
@@ -157,6 +156,7 @@ class App extends Component {
     );
   }
   render() {
+    console.log(this.state);
     return (
       <NoteContext.Provider
         value={{

@@ -40,7 +40,7 @@ export default class AddFolder extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // id: cuid(),
+        /* id: cuid(), */
         name: this.state.name,
       }),
     };
