@@ -64,13 +64,13 @@ class App extends Component {
       });
   }
 
-  handleDeleteNote = id => {
-    const newNotes = this.state.notes.filter(note => note.id !== id);
+  handleDeleteNote = note_id => {
+    const newNotes = this.state.notes.filter(note => note.note_id !== note_id);
 
     const options = {
       method: "DELETE",
     };
-    fetch(`${this.NoteUrl}/${id}`, options)
+    fetch(`${this.NoteUrl}/${note_id}`, options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");
@@ -113,15 +113,15 @@ class App extends Component {
     const {notes, folders} = this.state;
     return (
       <>
-        {["/", "/folder/:folderId"].map(path => (
+        {["/", "/folder/:folder_id"].map(path => (
           <Route exact key={path} path={path} component={NoteListNav} />
         ))}
         <Route
-          path='/note/:noteId'
+          path='/note/:note_id'
           render={routeProps => {
-            const {noteId} = routeProps.match.params;
-            const note = findNote(notes, noteId) || {};
-            const folder = findFolder(folders, note.folderId);
+            const {note_id} = routeProps.match.params;
+            const note = findNote(notes, note_id) || {};
+            const folder = findFolder(folders, note.folder_id);
             return <NotePageNav {...routeProps} folder={folder} />;
           }}
         />
@@ -132,9 +132,10 @@ class App extends Component {
   }
 
   renderMainRoutes() {
+    console.log(this.state);
     return (
       <>
-        {["/", "/folder/:folderId"].map(path => (
+        {["/", "/folder/:folder_id"].map(path => (
           <Route
             exact
             key={path}
@@ -145,7 +146,7 @@ class App extends Component {
           />
         ))}
         <Route
-          path='/note/:noteId'
+          path='/note/:note_id'
           render={routeProps => {
             return <NotePageMain {...routeProps} />;
           }}

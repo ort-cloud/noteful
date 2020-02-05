@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
 export default class NotePageMain extends Component {
   static contextType = NoteContext;
   render() {
-    const { noteId } = this.props.match.params;
-    const note = findNote(this.context.notes, noteId);
+    const { note_id } = this.props.match.params;
+    const note = findNote(this.context.notes, note_id);
     return (
       <section className='NotePageMain'>
         <Note
-          id={note.noteId}
-          name={note.name}
+          id={note.note_id}
+          name={note.note_name}
           modified={note.modified}
           handleDelete={this.context.handleDelete}
         />
@@ -36,5 +36,5 @@ NotePageMain.defaultProps = {
 };
 
 NotePageMain.propTypes = {
-  noteId: PropTypes.number
+  note_id: PropTypes.number
 };

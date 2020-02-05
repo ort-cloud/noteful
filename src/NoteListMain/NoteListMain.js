@@ -11,16 +11,16 @@ import PropTypes from "prop-types";
 export default class NoteListMain extends Component {
   static contextType = NoteContext;
   render() {
-    const {folderId} = this.props.match.params;
+    const {folder_id} = this.props.match.params;
     return (
       <section className='NoteListMain'>
         <ul>
-          {getNotesForFolder(this.context.notes, folderId).map(note => (
-            <li key={note.id}>
+          {getNotesForFolder(this.context.notes, folder_id).map(note => (
+            <li key={note.note_id}>
               <Note
                 handleDelete={this.context.handleDelete}
-                id={note.id}
-                name={note.name}
+                id={note.note_id}
+                name={note.note_name}
                 modified={note.modified}
               />
             </li>
@@ -47,5 +47,5 @@ NoteListMain.defaultProps = {
   notes: [],
 };
 NoteListMain.propTypes = {
-  folderId: PropTypes.string,
+  folder_id: PropTypes.number,
 };

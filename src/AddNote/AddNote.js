@@ -8,9 +8,9 @@ export default class AddNote extends Component {
     super();
     this.state = {
       error: null,
-      name: "",
+      note_name: "",
       content: "",
-      id: "",
+      note_id: "",
       nameValid: false,
       idValid: false,
       validationMessage: "",
@@ -25,12 +25,12 @@ export default class AddNote extends Component {
 
   isNameValid = event => {
     event.preventDefault();
-    if (!this.state.name) {
+    if (!this.state.note_name) {
       this.setState({
         validationMessage: "Note name can not be blank.",
         nameValid: false,
       });
-    } else if (!this.state.id) {
+    } else if (!this.state.note_id) {
       this.setState({
         validationMessageFolder: "You must choose a valid folder.",
         idValid: false,
@@ -55,9 +55,9 @@ export default class AddNote extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: this.state.name,
+        note_name: this.state.note_name,
         modified: new Date(),
-        folderId: this.state.id,
+        folder_id: this.state.folder_id,
         content: this.state.content,
       }),
     };
@@ -79,7 +79,7 @@ export default class AddNote extends Component {
   };
 
   nameChange = letter => {
-    this.setState({name: letter});
+    this.setState({note_name: letter});
   };
 
   contentChange = letter => {
@@ -87,7 +87,7 @@ export default class AddNote extends Component {
   };
 
   idChange = letter => {
-    this.setState({id: letter});
+    this.setState({folder_id: letter});
   };
 
   render() {
@@ -140,8 +140,8 @@ export default class AddNote extends Component {
                 ...
               </option>
               {this.context.folders.map(folder => (
-                <option key={folder.name} name='folder' value={folder.id}>
-                  {folder.name}
+                <option key={folder.folder_name} name='folder' value={folder.folder_id}>
+                  {folder.folder_name}
                 </option>
               ))}
             </select>

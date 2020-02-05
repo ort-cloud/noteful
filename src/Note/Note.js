@@ -7,17 +7,20 @@ import "./Note.css";
 
 class Note extends Component {
   render() {
-    console.log(this.props.modified);
+    /* console.log(this.props.modified); */
+    /* console.log(this.props.note_name); */
+    /* console.log(this.props.note_id); */
+    console.log(this.props);
     return (
       <div className='Note'>
         <h2 className='Note__title'>
-          <Link to={`/note/${this.props.noteId}`}>{this.props.name}</Link>
+          <Link to={`/note/${this.props.note_id}`}>{this.props.note_name}</Link>
         </h2>
         <button
           className='Note__delete'
           type='button'
           onClick={() => {
-            this.props.handleDelete(this.props.noteId);
+            this.props.handleDelete(this.props.note_id);
             this.props.history.push("/");
           }}
         >
@@ -40,7 +43,7 @@ export default withRouter(Note);
 
 Note.propTypes = {
   modified: PropTypes.string,
-  noteId: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  note_id: PropTypes.number.isRequired,
+  note_name: PropTypes.string.isRequired,
   handleDelete: PropTypes.func,
 };

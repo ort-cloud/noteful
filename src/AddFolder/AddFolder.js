@@ -8,7 +8,7 @@ export default class AddFolder extends Component {
     super();
     this.state = {
       error: null,
-      name: "",
+      folder_name: "",
       nameValid: false,
       validationMessage: "",
     };
@@ -17,7 +17,7 @@ export default class AddFolder extends Component {
 
   isNameValid = event => {
     event.preventDefault();
-    if (!this.state.name) {
+    if (!this.state.folder_name) {
       this.setState({
         validationMessage: "Folder name can not be blank.",
         nameValid: false,
@@ -40,8 +40,8 @@ export default class AddFolder extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        /* id: cuid(), */
-        name: this.state.name,
+        folder_id: this.state.folder_id,
+        folder_name: this.state.folder_name,
       }),
     };
     console.log(options);
