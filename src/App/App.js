@@ -132,7 +132,7 @@ class App extends Component {
   }
 
   renderMainRoutes() {
-    console.log(this.state);
+    
     return (
       <>
         {["/", "/folder/:folder_id"].map(path => (
@@ -157,7 +157,7 @@ class App extends Component {
     );
   }
   render() {
-    console.log(this.state);
+
     return (
       <NoteContext.Provider
         value={{

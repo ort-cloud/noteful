@@ -7,10 +7,10 @@ import "./Note.css";
 
 class Note extends Component {
   render() {
-    /* console.log(this.props.modified); */
-    /* console.log(this.props.note_name); */
-    /* console.log(this.props.note_id); */
-    console.log(this.props);
+    console.log(this.props.date_modified);
+    /* console.log(this.props.note_name);
+    console.log(this.props.note_id); */
+    /* console.log(this.props); */
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -28,9 +28,10 @@ class Note extends Component {
         </button>
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
-            Modified{" "}
+            Date_modified{" "}
             <span className='Date'>
-              {format(new Date(this.props.modified), "MM DD yyyy")}
+              {format(new Date(this.props.date_modified),  "Do MMM yyyy"
+)}
             </span>
           </div>
         </div>
@@ -42,7 +43,7 @@ class Note extends Component {
 export default withRouter(Note);
 
 Note.propTypes = {
-  modified: PropTypes.string,
+  date_modified: PropTypes.string,
   note_id: PropTypes.number.isRequired,
   note_name: PropTypes.string.isRequired,
   handleDelete: PropTypes.func,
