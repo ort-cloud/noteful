@@ -20,6 +20,7 @@ export default class AddNote extends Component {
   static contextType = NoteContext;
   static defaultProps = {
     folders: [],
+    
   };
 
   isNameValid = event => {
@@ -61,7 +62,7 @@ export default class AddNote extends Component {
       }),
     };
 
-    fetch("http://localhost:9090/notes", options)
+    fetch("http://localhost:8000/ape/notes", options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");
@@ -126,14 +127,16 @@ export default class AddNote extends Component {
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>Folder</label>
+
             <select
               id='note-folder-select'
               name='folder'
+              defaultValue={this.defaultProps}
               onChange={event => {
                 this.idChange(event.target.value);
               }}
             >
-              <option disabled selected value=''>
+              <option >
                 ...
               </option>
               {this.context.folders.map(folder => (
@@ -142,6 +145,7 @@ export default class AddNote extends Component {
                 </option>
               ))}
             </select>
+
             {!this.state.idValid ? (
               <div>
                 <p>{this.state.validationMessageFolder}</p>

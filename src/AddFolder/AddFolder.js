@@ -46,7 +46,7 @@ export default class AddFolder extends Component {
     };
     console.log(options);
 
-    fetch("http://localhost:9090/folders", options)
+    fetch("http://localhost:8000/api/folders", options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");

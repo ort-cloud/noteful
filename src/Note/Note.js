@@ -26,7 +26,7 @@ class Note extends Component {
           <div className='Note__dates-modified'>
             Modified{" "}
             <span className='Date'>
-              {format(new Date(this.props.modified), "Do MMM yyyy")}
+              {format(new Date(this.props.modified), "MM DD yyyy")}
             </span>
           </div>
         </div>
