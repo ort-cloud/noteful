@@ -35,6 +35,7 @@ class App extends Component {
           folders: data,
           error: null,
         });
+        
       })
       .catch(err => {
         this.setState({
@@ -56,6 +57,7 @@ class App extends Component {
           notes: data,
           error: null,
         });
+        console.log(this.state);
       })
       .catch(err => {
         this.setState({
@@ -66,7 +68,7 @@ class App extends Component {
 
   handleDeleteNote = note_id => {
     const newNotes = this.state.notes.filter(note => note.note_id !== note_id);
-    console.log(newNotes);
+
     const options = {
       method: "DELETE",
     };
@@ -75,15 +77,16 @@ class App extends Component {
         if (!res.ok) {
           throw new Error("Something went wrong");
         }
+        return res;
+      })
+      .then(res => res.json())
+      .then(data => {
         this.setState(
           {
             notes: newNotes,
             error: null,
           },
-          () => {
-            console.log(this.state);
-            this.props.history.replace("/");
-          }
+          () => this.props.history.replace("/")
         );
       })
       .catch(err => {
@@ -103,13 +106,18 @@ class App extends Component {
   };
 
   handleAddNote = note => {
+    /* console.log(this.state.notes); */
     this.setState({notes: [...this.state.notes, note]}, () =>
       this.props.history.replace("/")
     );
   };
 
+
   renderNavRoutes() {
+    
+    /* console.log(this.props); */
     const {notes, folders} = this.state;
+    /* console.log(this.state.notes); */
     return (
       <>
         {["/", "/folder/:folder_id"].map(path => (
@@ -131,6 +139,9 @@ class App extends Component {
   }
 
   renderMainRoutes() {
+    /* console.log(this.state);
+    console.log(this.props); */
+    /* console.log(this.state.notes); */
     return (
       <>
         {["/", "/folder/:folder_id"].map(path => (
@@ -146,7 +157,6 @@ class App extends Component {
         <Route
           path='/note/:note_id'
           render={routeProps => {
-            console.log(`This is route NoteMainPaige ${routeProps}`);
             return <NotePageMain {...routeProps} />;
           }}
         />
@@ -156,8 +166,9 @@ class App extends Component {
     );
   }
   render() {
-    console.log(this.state);
-
+    /* console.log(this.state.notes); */
+    /* console.log(this.props); */
+    /* console.log(this.state.notes); */
     return (
       <NoteContext.Provider
         value={{
