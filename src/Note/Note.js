@@ -7,10 +7,8 @@ import "./Note.css";
 
 class Note extends Component {
   render() {
-    console.log(this.props.date_modified);
-    /* console.log(this.props.note_name);
-    console.log(this.props.note_id); */
-    /* console.log(this.props); */
+    console.log(this.state);
+    console.log(this.props);
     return (
       <div className='Note'>
         <h2 className='Note__title'>

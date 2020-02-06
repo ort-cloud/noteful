@@ -35,6 +35,7 @@ class App extends Component {
           folders: data,
           error: null,
         });
+        
       })
       .catch(err => {
         this.setState({
@@ -56,6 +57,7 @@ class App extends Component {
           notes: data,
           error: null,
         });
+        console.log(this.state);
       })
       .catch(err => {
         this.setState({
@@ -104,13 +106,18 @@ class App extends Component {
   };
 
   handleAddNote = note => {
+    console.log(this.state.notes);
     this.setState({notes: [...this.state.notes, note]}, () =>
       this.props.history.replace("/")
     );
   };
 
+
   renderNavRoutes() {
+    
+    /* console.log(this.props); */
     const {notes, folders} = this.state;
+    console.log(this.state.notes);
     return (
       <>
         {["/", "/folder/:folder_id"].map(path => (
@@ -132,7 +139,9 @@ class App extends Component {
   }
 
   renderMainRoutes() {
-    
+    /* console.log(this.state);
+    console.log(this.props); */
+    console.log(this.state.notes);
     return (
       <>
         {["/", "/folder/:folder_id"].map(path => (
@@ -157,7 +166,9 @@ class App extends Component {
     );
   }
   render() {
-
+    /* console.log(this.state);
+    console.log(this.props); */
+    console.log(this.state.notes);
     return (
       <NoteContext.Provider
         value={{

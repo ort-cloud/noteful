@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
-import Note from '../Note/Note';
-import { findNote } from '../notes-helpers';
-import './NotePageMain.css';
-import NoteContext from '../NoteContext';
-import PropTypes from 'prop-types';
+import React, {Component} from "react";
+import Note from "../Note/Note";
+import {findNote} from "../notes-helpers";
+import "./NotePageMain.css";
+import NoteContext from "../NoteContext";
+import PropTypes from "prop-types";
 
 export default class NotePageMain extends Component {
+  
   static contextType = NoteContext;
   render() {
-    const { note_id } = this.props.match.params;
+    /* console.log(this.context.notes)
+    console.log(this.state);
+    console.log(this.props); */
+    console.log(this.props);
+    console.log(this.context);
+    const {note_id} = this.props.match.params;
     const note = findNote(this.context.notes, note_id);
+    /* console.log(this.context.notes); */
     return (
       <section className='NotePageMain'>
         <Note
@@ -28,13 +35,12 @@ export default class NotePageMain extends Component {
   }
 }
 
-
 NotePageMain.defaultProps = {
   note: {
-    content: ''
-  }
+    content: "",
+  },
 };
 
 NotePageMain.propTypes = {
-  note_id: PropTypes.number
+  note_id: PropTypes.number,
 };
