@@ -7,8 +7,6 @@ import "./Note.css";
 
 class Note extends Component {
   render() {
-    /* console.log(this.state);
-    console.log(this.props); */
     return (
       <div className='Note'>
         <h2 className='Note__title'>

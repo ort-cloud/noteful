@@ -8,11 +8,6 @@ import PropTypes from "prop-types";
 export default class NotePageMain extends Component {
   static contextType = NoteContext;
   render() {
-    /* console.log(this.context.notes) */
-    /* console.log(this.state); */
-    /* console.log(this.props);
-    console.log(this.props);
-    console.log(this.context); */
     const {note_id} = this.props.match.params;
     const note = findNote(this.context.notes, note_id);
     return (
