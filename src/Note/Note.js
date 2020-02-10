@@ -7,8 +7,6 @@ import "./Note.css";
 
 class Note extends Component {
   render() {
-    /* console.log(this.state);
-    console.log(this.props); */
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -28,8 +26,7 @@ class Note extends Component {
           <div className='Note__dates-modified'>
             Date_modified{" "}
             <span className='Date'>
-              {format(new Date(this.props.date_modified),  "Do MMM yyyy"
-)}
+              {format(new Date(this.props.date_modified), "Do MMM yyyy")}
             </span>
           </div>
         </div>

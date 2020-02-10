@@ -20,7 +20,6 @@ export default class AddNote extends Component {
   static contextType = NoteContext;
   static defaultProps = {
     folders: [],
-    
   };
 
   isNameValid = event => {
@@ -30,7 +29,7 @@ export default class AddNote extends Component {
         validationMessage: "Note name can not be blank.",
         nameValid: false,
       });
-    } else if (!this.state.note_id) {
+    } else if (!this.state.folder_id) {
       this.setState({
         validationMessageFolder: "You must choose a valid folder.",
         idValid: false,
@@ -136,11 +135,13 @@ export default class AddNote extends Component {
                 this.idChange(event.target.value);
               }}
             >
-              <option >
-                ...
-              </option>
+              <option>...</option>
               {this.context.folders.map(folder => (
-                <option key={folder.folder_name} name='folder' value={folder.folder_id}>
+                <option
+                  key={folder.folder_name}
+                  name='folder'
+                  value={folder.folder_id}
+                >
                   {folder.folder_name}
                 </option>
               ))}
