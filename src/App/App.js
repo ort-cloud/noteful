@@ -24,7 +24,7 @@ class App extends Component {
   NoteUrl = "https://git.heroku.com/serene-oasis-81075.git/api/notes"; */
 
   componentDidMount() {
-    fetch(config.API_ENDPOINT, {
+    fetch(config.API_ENDPOINT + 'api/folders', {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -34,6 +34,7 @@ class App extends Component {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
+        console.log(res);
         return res;
       })
       .then(res => res.json())
@@ -48,11 +49,11 @@ class App extends Component {
         this.setState({
           error: err.message,
         });
-        console.log(err);
-        
+        console.log(err)
+        console.log(this.state);
       });
 
-      fetch(config.API_ENDPOINT, {
+      fetch(config.API_ENDPOINT + 'api/notes', {
         method: "GET",
         headers: {
           "content-type": "application/json",
