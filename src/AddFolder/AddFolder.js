@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import NotefulForm from "../NotefulForm/NotefulForm";
 import "./AddFolder.css";
 import NoteContext from "../NoteContext";
+import config from '../config'
 
 export default class AddFolder extends Component {
   constructor() {
@@ -46,7 +47,8 @@ export default class AddFolder extends Component {
     };
     console.log(options);
 
-    fetch("http://localhost:8000/api/folders", options)
+    
+    fetch(config.API_ENDPOINT, options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");

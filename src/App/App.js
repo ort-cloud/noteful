@@ -10,6 +10,8 @@ import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
 import NotefulError from "../NotefulError/NotefulError";
 import {findNote, findFolder} from "../notes-helpers";
+import config from '../config'
+
 import "./App.css";
 
 class App extends Component {
@@ -18,11 +20,16 @@ class App extends Component {
     folders: [],
     err: null,
   };
-  FolderUrl = "http://localhost:8000/api/folders";
-  NoteUrl = "http://localhost:8000/api/notes";
+  /* FolderUrl = "https://git.heroku.com/serene-oasis-81075.git/api/folders";
+  NoteUrl = "https://git.heroku.com/serene-oasis-81075.git/api/notes"; */
 
   componentDidMount() {
-    fetch(this.FolderUrl)
+    fetch(config.API_ENDPOINT, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -43,7 +50,12 @@ class App extends Component {
         console.log(err);
       });
 
-    fetch(this.NoteUrl)
+      fetch(config.API_ENDPOINT, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -156,7 +168,7 @@ class App extends Component {
     );
   }
   render() {
-    console.log(this.state);
+    /* console.log(this.state); */
 
     return (
       <NoteContext.Provider
