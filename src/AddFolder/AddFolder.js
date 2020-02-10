@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import NotefulForm from "../NotefulForm/NotefulForm";
 import "./AddFolder.css";
 import NoteContext from "../NoteContext";
-import config from '../config'
+import config from "../config";
 
 export default class AddFolder extends Component {
   constructor() {
@@ -45,10 +45,8 @@ export default class AddFolder extends Component {
         folder_name: this.state.folder_name,
       }),
     };
-    console.log(options);
 
-    
-    fetch(config.API_ENDPOINT + 'api/folders', options)
+    fetch(config.API_ENDPOINT + "api/folders", options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");
@@ -67,7 +65,6 @@ export default class AddFolder extends Component {
   };
 
   nameChange = letter => {
-    console.log(letter);
     this.setState({folder_name: letter});
   };
 

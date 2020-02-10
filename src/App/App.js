@@ -10,7 +10,7 @@ import AddFolder from "../AddFolder/AddFolder";
 import AddNote from "../AddNote/AddNote";
 import NotefulError from "../NotefulError/NotefulError";
 import {findNote, findFolder} from "../notes-helpers";
-import config from '../config'
+import config from "../config";
 
 import "./App.css";
 
@@ -24,7 +24,7 @@ class App extends Component {
   NoteUrl = "https://git.heroku.com/serene-oasis-81075.git/api/notes"; */
 
   componentDidMount() {
-    fetch(config.API_ENDPOINT + 'api/folders', {
+    fetch(config.API_ENDPOINT + "api/folders", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -34,11 +34,10 @@ class App extends Component {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
-        console.log(res);
         return res;
       })
       .then(res => res.json())
-      
+
       .then(data => {
         this.setState({
           folders: data,
@@ -49,16 +48,14 @@ class App extends Component {
         this.setState({
           error: err.message,
         });
-        console.log(err)
-        console.log(this.state);
       });
 
-      fetch(config.API_ENDPOINT + 'api/notes', {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
+    fetch(config.API_ENDPOINT + "api/notes", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -81,7 +78,6 @@ class App extends Component {
 
   handleDeleteNote = note_id => {
     const newNotes = this.state.notes.filter(note => note.note_id !== note_id);
-    console.log(newNotes);
     const options = {
       method: "DELETE",
     };
@@ -97,7 +93,6 @@ class App extends Component {
             error: null,
           },
           () => {
-            console.log(this.state);
             this.props.history.replace("/");
           }
         );
@@ -162,7 +157,6 @@ class App extends Component {
         <Route
           path='/note/:note_id'
           render={routeProps => {
-            console.log(`This is route NoteMainPaige ${routeProps}`);
             return <NotePageMain {...routeProps} />;
           }}
         />
@@ -172,8 +166,6 @@ class App extends Component {
     );
   }
   render() {
-    /* console.log(this.state); */
-
     return (
       <NoteContext.Provider
         value={{
