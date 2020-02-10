@@ -85,7 +85,8 @@ class App extends Component {
     const options = {
       method: "DELETE",
     };
-    fetch(`${this.NoteUrl}/${note_id}`, options)
+    /* fetch(`${this.NoteUrl}/${note_id}`, options) */
+    fetch(config.API_ENDPOINT + `api/notes/${note_id}`, options)
       .then(res => {
         if (!res.ok) {
           throw new Error("Something went wrong");
