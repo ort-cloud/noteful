@@ -37,6 +37,7 @@ class App extends Component {
         return res;
       })
       .then(res => res.json())
+      
       .then(data => {
         this.setState({
           folders: data,
@@ -48,6 +49,7 @@ class App extends Component {
           error: err.message,
         });
         console.log(err);
+        
       });
 
       fetch(config.API_ENDPOINT, {
